@@ -1,0 +1,89 @@
+.dash-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+.dash-header h1 { margin-bottom: 4px; }
+
+.dash-xp-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(244,162,97,0.2), rgba(233,196,106,0.1));
+  border: 1px solid rgba(244,162,97,0.4);
+  border-radius: var(--radius-full);
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 0 16px rgba(244,162,97,0.15);
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .dash-grid { grid-template-columns: 1fr; }
+  .dash-side { order: -1; }
+}
+
+/* Lesson rows */
+.lessons-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+
+.lesson-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  text-decoration: none;
+}
+.lesson-row:hover .lesson-row-title { color: var(--primary-light); }
+
+.lesson-row-icon {
+  font-size: 1.6rem;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+.lesson-row-info { flex: 1; min-width: 0; }
+.lesson-row-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+  transition: var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lesson-row-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.lesson-row-action { flex-shrink: 0; }
+
+/* Badges */
+.badges-grid { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+.badge-chip {
+  padding: 5px 12px;
+  background: linear-gradient(135deg, rgba(13,115,119,0.2), rgba(244,162,97,0.1));
+  border: 1px solid rgba(13,115,119,0.3);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary-light);
+  text-transform: capitalize;
+}
+
+/* Announcements */
+.ann-list { display: flex; flex-direction: column; gap: var(--space-md); }
+.ann-item { border-bottom: 1px solid var(--border); padding-bottom: var(--space-md); }
+.ann-item:last-child { border-bottom: none; padding-bottom: 0; }
+.ann-title { font-size: 0.87rem; font-weight: 600; color: var(--text); margin: 4px 0; }
+.ann-msg { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }

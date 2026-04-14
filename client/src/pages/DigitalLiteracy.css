@@ -1,0 +1,23 @@
+.dl-module-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+.dl-module-icon {
+  font-size: 2rem;
+  width: 52px; height: 52px;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+}
+.dl-module-title { font-size: 1rem; margin-bottom: 6px; color: var(--text); }
+.dl-module-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: var(--space-md); line-height: 1.5; }
+.dl-module-topics { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: var(--space-md); }
+.dl-module-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border);
+}
+.dl-module-meta { display: flex; gap: var(--space-md); font-size: 0.78rem; color: var(--text-muted); }
+.dl-module-meta span { display: flex; align-items: center; gap: 3px; }

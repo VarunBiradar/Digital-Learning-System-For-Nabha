@@ -1,0 +1,39 @@
+.teacher-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--space-xl);
+  align-items: start;
+}
+@media (max-width: 1024px) { .teacher-grid { grid-template-columns: 1fr; } }
+
+.teacher-charts { display: flex; flex-direction: column; }
+
+.ann-form { display: flex; flex-direction: column; gap: var(--space-sm); }
+.ann-form-footer { display: flex; gap: var(--space-sm); align-items: center; }
+.ann-form-footer select { flex: 1; }
+
+.activity-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+.activity-row {
+  display: flex; align-items: center; gap: var(--space-sm);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.03);
+}
+.activity-avatar {
+  width: 30px; height: 30px;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 700; color: white;
+  flex-shrink: 0;
+}
+.activity-info { flex: 1; min-width: 0; }
+.activity-name { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+.activity-lesson { font-size: 0.75rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.student-avatar {
+  width: 28px; height: 28px;
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; color: white; flex-shrink: 0;
+}
