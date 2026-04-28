@@ -11,6 +11,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:4173',
+  'https://digital-learning-system-for-nabha.vercel.app',
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
