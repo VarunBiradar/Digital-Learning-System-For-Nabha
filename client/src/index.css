@@ -5,6 +5,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+Gurmukhi:wght@300;400;500;600;700&display=swap');
 
+/* Mobile color-scheme fix — force dark mode consistently */
+:root { color-scheme: dark; }
+
 /* ── CSS Variables ─────────────────── */
 :root {
   /* Colors */
@@ -70,7 +73,7 @@
 /* ── Reset ─────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 body {
   font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -79,6 +82,9 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  /* Force consistent dark background on mobile — prevents white flash */
+  background-color: #0A0F1E;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.lang-pa {
@@ -103,6 +109,12 @@ p { color: var(--text-secondary); }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  /* Fallback for browsers that don't support background-clip: text */
+  color: var(--primary-light);
+}
+/* Re-apply transparent only when clip is supported */
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .gradient-text { color: transparent; }
 }
 
 /* ── Buttons ───────────────────────── */
@@ -160,10 +172,12 @@ p { color: var(--text-secondary); }
 
 /* ── Cards ─────────────────────────── */
 .card {
+  background: rgba(255, 255, 255, 0.05);
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   transition: var(--transition);
 }
@@ -181,6 +195,7 @@ p { color: var(--text-secondary); }
 /* ── Glass Effect ──────────────────── */
 .glass {
   background: var(--bg-glass);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -250,9 +265,21 @@ select.form-input { cursor: pointer; }
   margin-left: var(--sidebar-width);
   padding: var(--space-2xl);
   min-height: 100vh;
+  /* prevent content from causing horizontal scroll */
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 @media (max-width: 768px) {
-  .main-content { margin-left: 0; padding: var(--space-md); padding-top: 70px; }
+  .main-content {
+    margin-left: 0;
+    padding: var(--space-md);
+    padding-top: 70px;
+    /* respect notch on iOS */
+    padding-left: max(var(--space-md), env(safe-area-inset-left));
+    padding-right: max(var(--space-md), env(safe-area-inset-right));
+    padding-bottom: max(var(--space-md), env(safe-area-inset-bottom));
+  }
 }
 
 /* ── Stats Grid ────────────────────── */
@@ -326,10 +353,11 @@ select.form-input { cursor: pointer; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); }
-.grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-lg); }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: var(--space-lg); }
 
 @media (max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2,1fr); } .grid-3 { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 640px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .grid-auto { grid-template-columns: 1fr; } }
 
 /* ── Flex Utilities ────────────────── */
 .flex { display: flex; }
@@ -386,6 +414,7 @@ select.form-input { cursor: pointer; }
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
+  /* Hide decorative orbs on small screens to improve performance */
 }
 .orb-1 {
   width: 400px; height: 400px;
@@ -396,6 +425,9 @@ select.form-input { cursor: pointer; }
   width: 300px; height: 300px;
   background: radial-gradient(circle, rgba(244,162,97,0.1), transparent 70%);
   bottom: -50px; right: -50px;
+}
+@media (max-width: 640px) {
+  .orb-1, .orb-2 { display: none; }
 }
 
 /* ── Table ─────────────────────────── */

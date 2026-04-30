@@ -177,7 +177,11 @@
 }
 
 @media (max-width: 640px) {
-  .landing-nav { padding: var(--space-md); }
+  .landing-nav { padding: var(--space-sm) var(--space-md); }
+  .landing-nav-actions .btn { padding: 7px 12px; font-size: 0.8rem; }
   .hero { padding: var(--space-2xl) var(--space-md); }
-  .hero-stats { gap: var(--space-lg); }
+  .hero-stats { gap: var(--space-lg); padding: var(--space-md); }
+  .hero-stat-num { font-size: 1.5rem; }
+  .features, .demo-section { padding-left: var(--space-md); padding-right: var(--space-md); }
+  .features-grid { grid-template-columns: 1fr; }
 }

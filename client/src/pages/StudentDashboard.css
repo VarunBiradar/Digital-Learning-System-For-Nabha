@@ -33,6 +33,12 @@
   .dash-grid { grid-template-columns: 1fr; }
   .dash-side { order: -1; }
 }
+@media (max-width: 640px) {
+  .dash-header { flex-direction: column; align-items: flex-start; }
+  .dash-xp-badge { align-self: flex-start; }
+  .lesson-row { flex-wrap: wrap; }
+  .lesson-row-action { width: 100%; }
+}
 
 /* Lesson rows */
 .lessons-list { display: flex; flex-direction: column; gap: var(--space-sm); }

@@ -49,7 +49,7 @@
 /* Lesson grid */
 .lessons-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   gap: var(--space-lg);
 }
 
@@ -174,4 +174,9 @@
 @media (max-width: 640px) {
   .filters-bar { flex-direction: column; }
   .search-box { min-width: 100%; }
+  .filter-group { width: 100%; }
+  .filter-group select { flex: 1; }
+}
+@media (max-width: 480px) {
+  .lessons-grid { grid-template-columns: 1fr; }
 }

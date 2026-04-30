@@ -5,6 +5,10 @@
   align-items: start;
 }
 @media (max-width: 1024px) { .teacher-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .ann-form-footer { flex-direction: column; }
+  .ann-form-footer select { width: 100%; }
+}
 
 .teacher-charts { display: flex; flex-direction: column; }
 

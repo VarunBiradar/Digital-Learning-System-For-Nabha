@@ -8,6 +8,17 @@
   .player-layout { grid-template-columns: 1fr; }
   .player-sidebar { order: -1; }
 }
+@media (max-width: 640px) {
+  .player-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+  }
+  .player-tabs::-webkit-scrollbar { display: none; }
+  .player-title { font-size: 1.15rem; }
+  .player-header { flex-direction: column; }
+}
 
 /* Video */
 .video-wrapper {
