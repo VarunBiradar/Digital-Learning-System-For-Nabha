@@ -75,8 +75,8 @@ const Login = () => {
                 className={`role-btn ${role === r ? 'active' : ''}`}
                 onClick={() => { setRole(r); setEmail(''); setPassword(''); setError(''); }}
               >
-                {r === 'student' ? '🧑‍🎓' : r === 'teacher' ? '👩‍🏫' : '🛡️'}
-                <span>{r.charAt(0).toUpperCase() + r.slice(1)}</span>
+                <span className="role-emoji">{r === 'student' ? '🧑‍🎓' : r === 'teacher' ? '👩‍🏫' : '🛡️'}</span>
+                <span className="role-label">{r.charAt(0).toUpperCase() + r.slice(1)}</span>
               </button>
             ))}
           </div>

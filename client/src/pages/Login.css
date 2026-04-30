@@ -28,20 +28,24 @@
   font-size: 1rem;
   font-weight: 700;
   color: var(--primary-light);
+  text-decoration: none;
 }
 
 .login-card {
   padding: var(--space-2xl);
+  text-align: center;
 }
 
 .login-title {
   font-size: 1.6rem;
   margin-bottom: 4px;
+  text-align: left;
 }
 
 .login-subtitle {
   font-size: 0.87rem;
   margin-bottom: var(--space-xl);
+  text-align: left;
 }
 
 /* Role selector */
@@ -56,61 +60,100 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: var(--space-sm);
+  justify-content: center;
+  gap: 6px;
+  padding: 12px var(--space-sm);
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   color: var(--text-secondary);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
   transition: var(--transition);
+  min-height: 72px;
+  line-height: 1;
 }
-.role-btn span { font-size: 0.78rem; }
-.role-btn:first-child { font-size: 1.3rem; }
-.role-btn > *:first-child { font-size: 1.4rem; }
+
+/* Emoji icon inside role button */
+.role-btn .role-emoji {
+  font-size: 1.5rem;
+  line-height: 1;
+  display: block;
+}
+
+/* Text label inside role button */
+.role-btn .role-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1;
+  display: block;
+}
+
 .role-btn:hover {
   border-color: var(--primary);
   color: var(--text);
-  background: rgba(13,115,119,0.05);
+  background: rgba(13, 115, 119, 0.05);
 }
+
 .role-btn.active {
   border-color: var(--primary-light);
-  background: rgba(13,115,119,0.15);
+  background: rgba(13, 115, 119, 0.15);
   color: var(--primary-light);
 }
 
 .demo-fill-btn {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   margin-bottom: var(--space-lg);
-  background: rgba(244,162,97,0.1);
-  border: 1px dashed rgba(244,162,97,0.4);
+  background: rgba(244, 162, 97, 0.1);
+  border: 1px dashed rgba(244, 162, 97, 0.4);
   border-radius: var(--radius-md);
   color: var(--secondary);
   font-size: 0.82rem;
   font-weight: 500;
   cursor: pointer;
   transition: var(--transition);
+  text-align: center;
 }
+
 .demo-fill-btn:hover {
-  background: rgba(244,162,97,0.18);
+  background: rgba(244, 162, 97, 0.18);
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .pw-wrapper {
   position: relative;
 }
+
 .pw-wrapper .form-input {
   padding-right: 42px;
   width: 100%;
+  box-sizing: border-box;
 }
+
 .pw-toggle {
   position: absolute;
   right: 12px;
@@ -122,17 +165,61 @@
   border: none;
   display: flex;
   align-items: center;
+  padding: 0;
 }
-.pw-toggle:hover { color: var(--text); }
+
+.pw-toggle:hover {
+  color: var(--text);
+}
+
+.btn-full {
+  width: 100%;
+}
 
 .login-note {
   margin-top: var(--space-md);
   text-align: center;
   font-size: 0.78rem;
 }
+
 .login-note code {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   padding: 1px 6px;
   border-radius: 4px;
   font-size: 0.8rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .login-page {
+    padding: var(--space-md);
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  .login-container {
+    max-width: 100%;
+  }
+
+  .login-card {
+    padding: var(--space-lg);
+  }
+
+  .role-selector {
+    gap: 8px;
+  }
+
+  .role-btn {
+    min-height: 64px;
+    padding: 10px 6px;
+    font-size: 0.75rem;
+  }
+
+  .role-btn .role-emoji {
+    font-size: 1.3rem;
+  }
+
+  .role-btn .role-label {
+    font-size: 0.75rem;
+  }
 }
